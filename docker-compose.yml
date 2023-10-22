@@ -10,6 +10,8 @@ services:
       - 5011:5011
     volumes:
       - 'settings:/data'
+    labels:
+      io.balena.features.dbus: '1'
   scheduler:
     restart: always
     build: ./scheduler
