@@ -43,6 +43,8 @@ RUN useradd chromium -m -s /bin/bash -G root || true && \
 
 COPY ./public-html /home/chromium  
 
+RUN echo 'export XDG_RUNTIME_DIR=/run/user/$(id -u)' >> /home/chromium/.bashrc
+
 # udev rule to set specific permissions 
 RUN echo 'SUBSYSTEM=="vchiq",GROUP="video",MODE="0660"' > /etc/udev/rules.d/10-vchiq-permissions.rules
 RUN usermod -a -G audio,video,tty chromium
