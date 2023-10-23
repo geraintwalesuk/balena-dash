@@ -30,9 +30,9 @@ services:
     privileged: true
     labels:
       io.balena.features.dbus: '1'
-#  browsercontrol:
-#    build: ./browsercontrol
-#    restart: always
-#    privileged: true
-#    ports:
-#      - 8080:80
+  browsercontrol:
+    build: ./browsercontrol
+    restart: always
+    privileged: true
+    ports:
+      - 8080:80
