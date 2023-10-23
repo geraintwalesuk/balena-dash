@@ -11,6 +11,7 @@ RUN install_packages \
     mesa-vdpau-drivers \
     scrot \
     x11-xserver-utils \
+    x11-touchscreen-calibrator \
     xserver-xorg-input-evdev \
     xserver-xorg-legacy \
     xserver-xorg-video-fbdev \
