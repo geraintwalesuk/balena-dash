@@ -3,7 +3,8 @@ FROM bh.cr/balenalabs/browser-%%BALENA_ARCH%%/2.4.5
 # install required packages
 RUN install_packages \
     apt-utils \
-    chromium-browser \
+    chromium-common \
+    chromium \
     libgles2-mesa \
     lsb-release \
     mesa-vdpau-drivers \
@@ -15,6 +16,7 @@ RUN install_packages \
     xserver-xorg xinit \
     xinput \
     xterm 
+
 
 RUN install_packages cec-utils
 
