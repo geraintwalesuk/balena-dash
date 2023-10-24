@@ -28,8 +28,8 @@ services:
     build: ./fbcp
     restart: on-failure
     privileged: true
-#    labels:
-#      io.balena.features.dbus: '1'
+    labels:
+      io.balena.features.dbus: '1'
   browsercontrol:
     build: ./browsercontrol
     restart: always
