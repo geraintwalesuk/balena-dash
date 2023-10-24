@@ -10,8 +10,8 @@ services:
       - 5011:5011
     volumes:
       - 'settings:/data'
-    labels:
-      io.balena.features.dbus: '1'
+#    labels:
+#      io.balena.features.dbus: '1'
   scheduler:
     restart: always
     build: ./scheduler
@@ -28,13 +28,13 @@ services:
     build: ./fbcp
     restart: on-failure
     privileged: true
-    labels:
-      io.balena.features.dbus: '1'
+#    labels:
+#      io.balena.features.dbus: '1'
   browsercontrol:
     build: ./browsercontrol
     restart: always
     privileged: true
-    labels:
-      io.balena.features.dbus: '1'
+#    labels:
+#      io.balena.features.dbus: '1'
     ports:
       - 8080:80
