@@ -11,7 +11,6 @@ RUN install_packages \
     mesa-vdpau-drivers \
     scrot \
     x11-xserver-utils \
-    x11-touchscreen-calibrator \
     xserver-xorg-input-evdev \
     xserver-xorg-legacy \
     xserver-xorg-video-fbdev \
@@ -20,6 +19,9 @@ RUN install_packages \
     xterm 
 
 WORKDIR /usr/src/app
+
+ENV UDEV=1
+ENV DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
 
 # install node dependencies
 COPY ./package.json /usr/src/app/package.json
@@ -30,8 +32,6 @@ COPY ./src /usr/src/app/
 RUN chmod +x ./*.sh
 
 ENV UDEV=1
-#ENV DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
-#ENV DBUS_SESSION_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
 
 RUN mkdir -p /etc/chromium/policies
 RUN mkdir -p /etc/chromium/policies/recommended
@@ -43,8 +43,6 @@ RUN useradd chromium -m -s /bin/bash -G root || true && \
     && chown -R chromium:chromium /home/chromium || true
 
 COPY ./public-html /home/chromium  
-
-#RUN echo 'export XDG_RUNTIME_DIR=/run/user/$(id -u)' >> /home/chromium/.bashrc
 
 # udev rule to set specific permissions 
 RUN echo 'SUBSYSTEM=="vchiq",GROUP="video",MODE="0660"' > /etc/udev/rules.d/10-vchiq-permissions.rules
