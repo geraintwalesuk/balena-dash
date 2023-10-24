@@ -7,7 +7,6 @@ sysctl -w user.max_user_namespaces=10000
 /usr/bin/entry.sh echo "Running balena base image entrypoint..."
 
 export DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
-export DBUS_SESSION_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
 
 
 sed -i -e 's/console/anybody/g' /etc/X11/Xwrapper.config
@@ -59,5 +58,5 @@ environment=$(env | grep -v -w '_' | awk -F= '{ st = index($0,"=");print substr(
 environment="${environment::-1}"
 
 # launch Chromium and whitelist the enVars so that they pass through to the su session
-su -w $environment -c "export DBUS_SESSION_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket && export DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket && export DISPLAY=:$DISPLAY_NUM && startx /usr/src/app/startx.sh $CURSOR" - chromium
+su -w $environment -c "export DISPLAY=:$DISPLAY_NUM && startx /usr/src/app/startx.sh $CURSOR" - chromium
 balena-idle
