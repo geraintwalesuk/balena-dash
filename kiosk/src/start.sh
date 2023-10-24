@@ -6,7 +6,7 @@ sysctl -w user.max_user_namespaces=10000
 # Run balena base image entrypoint script
 /usr/bin/entry.sh echo "Running balena base image entrypoint..."
 
-export DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
+#export DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
 
 
 sed -i -e 's/console/anybody/g' /etc/X11/Xwrapper.config
