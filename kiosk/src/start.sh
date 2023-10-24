@@ -57,5 +57,5 @@ environment=$(env | grep -v -w '_' | awk -F= '{ st = index($0,"=");print substr(
 environment="${environment::-1}"
 
 # launch Chromium and whitelist the enVars so that they pass through to the su session
-su -w $environment -c "export DISPLAY=:$DISPLAY_NUM && startx /usr/src/app/startx.sh $CURSOR" - chromium
+su -w $environment -c "export DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket && export DISPLAY=:$DISPLAY_NUM && startx /usr/src/app/startx.sh $CURSOR" - chromium
 balena-idle
