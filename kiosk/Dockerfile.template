@@ -1,3 +1,6 @@
 FROM bh.cr/balenalabs/browser-%%BALENA_ARCH%%/2.4.5
 
 RUN install_packages cec-utils
+
+ENV UDEV=1
+ENV DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
