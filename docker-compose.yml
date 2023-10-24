@@ -10,6 +10,8 @@ services:
       - 5011:5011
     volumes:
       - 'settings:/data'
+    environment:
+      - 'DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket'
     labels:
       io.balena.features.dbus: '1'
   scheduler:
