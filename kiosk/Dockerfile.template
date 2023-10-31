@@ -4,6 +4,7 @@ FROM balenalib/%%BALENA_MACHINE_NAME%%-debian-node:${NODEJS_VERSION}-bullseye-ru
 
 # install required packages
 RUN install_packages \
+    apt-utils \
     chromium-common \
     chromium \
     libgles2-mesa \
