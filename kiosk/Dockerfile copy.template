@@ -18,7 +18,6 @@ RUN install_packages \
     xinput \
     xterm 
 
-WORKDIR /etc/X11/xorg.conf.d
 WORKDIR /usr/src/app
 
 ENV UDEV=1
@@ -55,4 +54,3 @@ COPY VERSION .
 
 # Start app
 CMD ["bash", "/usr/src/app/start.sh"]
-
